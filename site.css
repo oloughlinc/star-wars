@@ -17,7 +17,9 @@ p {
   --dark2: darkblue;
   --light2: rgb(16, 173, 212);
   background-color: rgb(245, 223, 203);
+  background-image: url(space.jpg);
   color: var(--dark1);
+  color: var(--light1);
 }
 
 button {
@@ -134,4 +136,5 @@ section#films a:hover {
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 50px;
+  background-color: black;
 }
