@@ -1,26 +1,35 @@
 const sp = new URLSearchParams(window.location.search);
 const id = sp.get('id');
-const filmsUrl = `https://swapi2.azurewebsites.net/api/films/${id}`;
-const charactersUrl = `https://swapi2.azurewebsites.net/api/films/${id}/characters`;
-const planetsUrl = `https://swapi2.azurewebsites.net/api/films/${id}/planets`;
+const url = `https://swapi2.azurewebsites.net/api/films/${id}`;
 
 document.addEventListener('DOMContentLoaded', getFilmDetails)
 
 async function getFilmDetails() {
-    console.log('id is', id);
-    // let film = Object;
-    // let characters = [];
-    // let planets = [];
-    const film = await fetch(filmsUrl).then(res => res.json())
-    const characters = await fetch(charactersUrl).then(res => res.json())
-    const planets = await fetch(planetsUrl).then(res => res.json())
-    console.log(film)
-    console.log(characters)
-    console.log(planets)
+    const film = await fetch(url).then(res => res.json())
+    const characters = await fetch(`${url}/characters`).then(res => res.json())
+    const planets = await fetch(`${url}/planets`).then(res => res.json())
+    displayFilm(film);
+    displayCharacters(characters);
+    displayPlanets(planets);
+}
 
-    document.getElementById('film-info').innerHTML += film.title;
-    document.getElementById('characters').innerHTML += characters.map(item => `<div>${item.name}</div>`)
-    document.getElementById('planets').innerHTML += planets.map(item => `<div>${item.name}</div>`)    
+function displayFilm(film) {
+    document.getElementById('name').innerHTML = film.title;
+    document.querySelector('div#crawl').textContent = film.opening_crawl;
+    document.querySelector('span#episode').textContent = film.episode_id;
+    document.querySelector('span#director').textContent = film.director;
+    document.querySelector('span#release').textContent = film.release_date;
+    document.querySelector('span#producer').textContent = film.producer;
+}
+
+function displayCharacters(characters) {
+    const characterHtml = characters.map(item => `<li><a href="/character.html?id=${item.id}">${item.name}</li>`).join("");
+    document.querySelector('#characters>ul').innerHTML = characterHtml;
+}
+
+function displayPlanets(planets) {
+    const planetHtml = planets.map(item => `<li><a href="/planet.html?id=${item.id}">${item.name}</li>`).join("");
+    document.querySelector('#planets>ul').innerHTML = planetHtml;
 }
 /*
 planets 
