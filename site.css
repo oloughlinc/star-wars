@@ -16,9 +16,8 @@ p {
   --light1: white;
   --dark2: darkblue;
   --light2: rgb(16, 173, 212);
-  background-color: rgb(245, 223, 203);
+  background-color: black;
   background-image: url(space.jpg);
-  color: var(--dark1);
   color: var(--light1);
 }
 
