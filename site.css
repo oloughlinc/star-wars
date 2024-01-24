@@ -122,6 +122,14 @@ section#films a {
   border: 1px solid var(--dark2);
 }
 
+#charactersList div:hover,
+section#planets a:hover,
+section#characters a:hover,
+section#films a:hover {
+  background-color: rgb(84, 143, 163);
+  scale: 1.05;
+}
+
 #crawl {
   margin-left: 50px;
   margin-right: 50px;

@@ -31,10 +31,6 @@ function displayPlanets(planets) {
     const planetHtml = planets.map(item => `<li><a href="/planet.html?id=${item.id}">${item.name}</li>`).join("");
     document.querySelector('#planets>ul').innerHTML = planetHtml;
 }
-/*
-planets 
-    filmsUrl
-    charactersUrl
-*/
+
 
 
